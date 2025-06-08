@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-fast {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.animate-fade-in-fast {
+  animation: fade-in-fast 0.2s ease-out forwards;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.5);
+}
+
+/* Einfache Formatierung für Textinhalte */
+.entry-content pre {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-size: 14px;
+  color: #1e293b;
+  white-space: pre-wrap;
+}
+
+/* Seitenumbruch für Druck */
+.page-content {
+  page-break-before: auto;
+}
+
+.page-separator {
+  page-break-before: always;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-container,
+  .print-container * {
+    visibility: visible;
+  }
+
+  .print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;
+    height: 297mm;
+  }
+
+  .page-content {
+    page-break-before: always;
+  }
+
+  .page-content:first-child {
+    page-break-before: auto;
+  }
+
+  .page-separator {
+    display: none;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
